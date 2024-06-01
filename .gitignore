@@ -1,1 +1,4 @@
 /python_selenium/
+/tests/main.py
+/tests/login_page.py
+/tests/change_password.py
