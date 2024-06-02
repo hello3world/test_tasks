@@ -17,7 +17,7 @@ class Login_page:
     def authentication(self, number_test, mail_name, login_name, password):
         if number_test == '1':
             self.driver.get('https://x.com/settings/password')
-        elif number_test == '3':
+        elif number_test == '2':
             self.driver.get('https://x.com/home')
             time.sleep(8)
             wait = WebDriverWait(self.driver, 10)
@@ -118,7 +118,7 @@ def main():
     password = credentials['password']
     user_current_password = credentials['user_current_password']
     user_new_password = credentials['user_new_password']
-    print("1 - проверка смены пароля: \n 3 - проверка добавления нового поста")
+    print("1 - проверка смены пароля: \n 2 - проверка добавления нового поста")
     number_test = input("Введите номер теста:")
     login = Login_page(driver)
     login.authentication(number_test, mail_name, login_name, password)
@@ -127,7 +127,7 @@ def main():
         test_change_password = Change_password(driver)
         test_change_password.change_password(user_current_password,
                                              user_new_password)
-    elif number_test == '3':
+    elif number_test == '2':
         def generate_random_text():
             return ''.join(
                 random.choices(string.ascii_letters + string.digits, k=280))
