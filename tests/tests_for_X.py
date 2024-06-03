@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
+# класс страницы аутентификации
 class Login_page:
     def __init__(self, driver):
         self.driver = driver
@@ -59,7 +59,7 @@ class Login_page:
         button_password.click()
         time.sleep(10)
 
-
+# смены пароля
 class Change_password:
     def __init__(self, driver):
         self.driver = driver
@@ -83,7 +83,7 @@ class Change_password:
         print("Test -change_password- is completed succesfully")
         time.sleep(2)
 
-
+# Класс публикация поста
 class XPost:
     def __init__(self, driver):
         self.driver = driver
@@ -99,7 +99,6 @@ class XPost:
         print("Tweet posted successfully")
         time.sleep(2)
 
-
 def read_credentials(file_path):
     credentials = {}
     with open(file_path, 'r') as file:
@@ -108,10 +107,9 @@ def read_credentials(file_path):
             credentials[key] = value
     return credentials
 
-
 def main():
     driver = webdriver.Chrome()
-    credentials = read_credentials('credentials.txt')
+    credentials = read_credentials('credentials_for_X.txt')
 
     mail_name = credentials['mail_name']
     login_name = credentials['login_name']
@@ -136,7 +134,6 @@ def main():
         twitter_bot = XPost(driver)
         twitter_bot.random_tweet(tweet_text)
         time.sleep(5)
-
 
 if __name__ == "__main__":
     main()
